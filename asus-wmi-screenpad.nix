@@ -41,9 +41,3 @@ stdenv.mkDerivation rec {
     maintainers = with maintainers; [ ]; # Add your maintainer here
   };
 }
-~
-~
-~
-~
-~
-
