@@ -1,4 +1,4 @@
-An adaptation of the asus-wmi-screenpad kernel module to a nix derivation. This is not a fully contained module, and not meeting the nix standard entirely as it is not gonna run sandboxed and without prefetching the needed resources in 'prepare-for-current-kernel.sh`, subsequently having to be run with `--option sandbox false`.
+An adaptation of the asus-wmi-screenpad kernel module to a nix derivation. This is not a fully contained module, and not meeting the nix standard entirely as it is not gonna run sandboxed and without prefetching the needed resources in `prepare-for-current-kernel.sh`, subsequently having to be run with `--option sandbox false`.
 
 
 ### Steps to run:
