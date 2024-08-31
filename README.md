@@ -9,8 +9,8 @@ Before trying to run this, it's worth taking a look at the [original documentaio
 2. Make the following changes in `configuration.nix`:
 
 ```
-#the `let in` expression has to be at the beggining of your configuration.nix file, before anything else is declared
-#the first curly brace represent your usual beggining of a configuration.nix file
+#the `let in` expression has to be at the beginning of your configuration.nix file, before anything else is declared
+#the first curly brace represent your usual beginning of a configuration.nix file
 let  
   asusWmiScreenpad = config.boot.kernelPackages.callPackage ./asus-wmi-screenpad.nix { };  
 in  
