@@ -5,6 +5,10 @@ stdenv.mkDerivation rec {
   version = "1.0"; 
 
   src = fetchzip {
+    #url = "https://github.com/Plippo/asus-wmi-screenpad/archive/master.zip";
+    #url = "https://github.com/joyfulcat/asus-wmi-screenpad/archive/master.zip";
+    #sha256 = "sha256-np7ILw6JhmFE6iS6HLuTJ1/OnjIph5UYj8Vs3/PBRdA="; 
+    #sha256 = "sha256-EmM9L7thAkHe2iBPrdPaK93TXOIN95Si1TLFOuqthgo="; #joyfulcat
     url = "https://github.com/joyfulcat/asus-wmi-screenpad/archive/master.zip";
     sha256 = "sha256-owy7giOtHNW7htxIZ3kByWzYJeQdu/fjkQF7jN2rlmg=";
   };
@@ -14,7 +18,6 @@ stdenv.mkDerivation rec {
   __noChroot = true;
 
   patchPhase = ''
-    # Only run if your kernel version requires it
     sh prepare-for-current-kernel.sh
   '';
 
@@ -30,7 +33,8 @@ stdenv.mkDerivation rec {
 
   postInstall = ''
     # Instructions for setting device permissions and usage
-    # This will need to be handled outside the Nix build, like setting udev rules or manual steps
+    # This will need to be handled outside the Nix build, like udev rules which go into configuration.nix
+    # Refer to ... for example on setting udev rules 
     echo "Remember to set permissions and manage device interaction as needed."
   '';
 
