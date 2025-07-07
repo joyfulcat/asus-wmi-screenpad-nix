@@ -90,6 +90,11 @@ let
       "asus-wmi.h" = "08b7acx7qq173k75vj97070v25xj7mrw1l82s88md6z98avsf3yq";
       "asus-nb-wmi.c" = "17zlc1c4bk03abqxw63d6i4fbgp8x1f3p822vlsggq1ngg7lkapr";
     };
+    "6.12" = {
+      "asus-wmi.c" = "01ss9iwij45a8n2cw9w03av4im02wa72xfmyinki8kv748ja54yr";
+      "asus-wmi.h" = "1gf5q4wxr7s9him6y7m44pczgawlnwch6w4whd00sfdxcpvc0fif";
+      "asus-nb-wmi.c" = "0kjp4w0przi7flg1ksy8y1f5pz4plaiq6gmv1q7dyp8cyds04jvm";
+    };
   };
 # Verify kernel version is supported
   assertKernelSupported = version:
@@ -104,8 +109,9 @@ let
     in
     if lib.versionOlder v "5.7" then "patch"
     else if lib.versionOlder v "5.99" then "patch5.8"
-    else if lib.versionOlder v "6.2" then "patch6.0"
-    else "patch6.2";
+    else if lib.versionOlder v "6.1" then "patch6.0"  # Corrected upper bound
+    else if lib.versionOlder v "6.10" then "patch6.2" # Added check for 6.10
+    else "patch6.11";   
 
   # Verify and get kernel version
   kernelVersion = assertKernelSupported baseKernelVersion;
@@ -132,7 +138,7 @@ in stdenv.mkDerivation rec {
 
   src = fetchzip {
     url = "https://github.com/joyfulcat/asus-wmi-screenpad/archive/master.zip";
-    sha256 = "sha256-owy7giOtHNW7htxIZ3kByWzYJeQdu/fjkQF7jN2rlmg=";
+    sha256 = "sha256-CN7+48EfKWJv1XP2Zq8JK+vULAxxji4fq7PaNfFL3MI=";
   };
 
   nativeBuildInputs = [ kernel ];
@@ -169,7 +175,8 @@ in stdenv.mkDerivation rec {
       - 5.4 to 5.6 (patch)
       - 5.8 to 5.99 (patch5.8)
       - 6.0 to 6.1 (patch6.0)
-      - 6.2+ (patch6.2)
+      - 6.2 to 6.10 (patch6.2)	
+      - 6.11+ (patch6.11)
     '';
     homepage = "https://github.com/joyfulcat/asus-wmi-screenpad-nix";
     license = licenses.gpl2Only;
