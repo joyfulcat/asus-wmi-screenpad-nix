@@ -38,5 +38,5 @@ in
 
 ### Having problems?
 
-Currently this is working fine for me on nixos (stable) 24.11. Please note that if you are running a very new kernel this might not
- work, currently working to address this in the next release. If you encounter any problems, feel free to open an issue.
+Currently this is working fine for me on nixos (stable) 25.05. Note that if you are running a very new kernel this might not
+ work. If you encounter any problems, feel free to open an issue.
